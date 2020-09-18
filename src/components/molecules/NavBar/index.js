@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../../store/actions/user'
+import { localStorage } from '../../../utils/helpers'
 import {
   StyledNavBar,
   StyledBrand,
@@ -19,13 +20,14 @@ const NavBar = () => {
   const history = useHistory()
 
   const handleLogout = async () => {
+    await localStorage.remove('userToken')
     await dispatch(logout())
     history.push('/')
   }
 
   return (
     <StyledNavBar>
-      <StyledBrand href="/">React Bootstrap</StyledBrand>
+      <StyledBrand href="/">React Boilerplate</StyledBrand>
 
       <StyledCollapse>
         <StyledNavigation>
