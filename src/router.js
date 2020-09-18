@@ -1,53 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-
-function Home() {
-  return <h2>Home</h2>
-}
-
-function About() {
-  return <h2>About</h2>
-}
-
-function Users() {
-  return <h2>Users</h2>
-}
+import { useDispatch } from 'react-redux'
+import { restoreToken } from '../src/store/actions/user'
+import { localStorage } from '../src/utils/helpers'
+import { PrivateRoute } from '../src/components/atoms'
+import { NavBar } from '../src/components/molecules'
+import { PublicPage, ProtectedPage, Login } from '../src/containers'
 
 export default () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetch = async () => {
+      const token = await localStorage.get('userToken')
+      if (token) {
+        await dispatch(restoreToken(token.split(' ')[1]))
+      }
+    }
+    fetch()
+  }, [])
+
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+      <NavBar />
 
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/public">
+          <PublicPage />
+        </Route>
+
+        <PrivateRoute path="/protected">
+          <ProtectedPage />
+        </PrivateRoute>
+      </Switch>
     </Router>
   )
 }
