@@ -1,7 +1,18 @@
 import React, { useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import styled from 'styled-components'
 import { logout } from '../../../store/actions/user'
+
+const StyledNavBar = styled.nav(
+  () => `
+    display: flex;
+    flex: 1;
+    height: 67px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: white;
+  `
+)
 
 const NavBar = () => {
   const token = useSelector((state) => state.user.token)
@@ -15,7 +26,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav>
+    <StyledNavBar>
       <ul>
         <li>
           <Link to="/public">Public Page</Link>
@@ -29,7 +40,7 @@ const NavBar = () => {
       </li>
         )}
       </ul>
-    </nav>
+    </StyledNavBar>
   )
 }
 
