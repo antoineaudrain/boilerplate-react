@@ -4,6 +4,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   devServer: {
+    historyApiFallback: {
+      disableDotRule: true
+    },
     contentBase: './dist',
     hot: true
   },
