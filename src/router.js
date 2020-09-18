@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { restoreToken } from '../src/store/actions/user'
-import { localStorage } from '../src/utils/helpers'
-import { PrivateRoute } from '../src/components/atoms'
-import { NavBar } from '../src/components/molecules'
-import { PublicPage, ProtectedPage, Login } from '../src/containers'
+import { restoreToken } from './store/actions/user'
+import { localStorage } from './utils/helpers'
+import { PrivateRoute } from './components/atoms'
+import { NavBar } from './components/molecules'
+import { PublicPage, ProtectedPage, Login } from './containers'
 
 export default () => {
   const dispatch = useDispatch()

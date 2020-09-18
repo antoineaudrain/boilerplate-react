@@ -1,4 +1,3 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import thunk from 'redux-thunk'
@@ -10,14 +9,13 @@ import user from './reducers/user'
 const rootReducer = combineReducers({
   user
 })
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), devToolsEnhancer()))
+const store = createStore(
+  rootReducer,
+  compose(applyMiddleware(thunk), devToolsEnhancer())
+)
 
 const StoreProvider = ({ children }) => {
-  return (
-    <Provider store={store}>
-      {children}
-    </Provider>
-  )
+  return <Provider store={store}>{children}</Provider>
 }
 
 StoreProvider.propTypes = {

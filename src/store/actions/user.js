@@ -1,9 +1,4 @@
-import {
-  SET_TOKEN,
-  RESTORE_TOKEN,
-  SET_USER,
-  LOGOUT
-} from '../constants/user'
+import { SET_TOKEN, RESTORE_TOKEN, SET_USER, LOGOUT } from '../constants/user'
 
 export const restoreToken = (token) => ({
   type: RESTORE_TOKEN,

@@ -1,18 +1,16 @@
 import React, { useMemo } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
 import { logout } from '../../../store/actions/user'
-
-const StyledNavBar = styled.nav(
-  () => `
-    display: flex;
-    flex: 1;
-    height: 67px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-    background-color: white;
-  `
-)
+import {
+  StyledNavBar,
+  StyledBrand,
+  StyledCollapse,
+  StyledNavigation,
+  StyledLink,
+  StyledAction,
+  StyledButton
+} from './index.style'
 
 const NavBar = () => {
   const token = useSelector((state) => state.user.token)
@@ -27,19 +25,20 @@ const NavBar = () => {
 
   return (
     <StyledNavBar>
-      <ul>
-        <li>
-          <Link to="/public">Public Page</Link>
-        </li>
-        <li>
-          <Link to="/protected">Protected Page</Link>
-        </li>
+      <StyledBrand href="/">React Bootstrap</StyledBrand>
+
+      <StyledCollapse>
+        <StyledNavigation>
+          <StyledLink to="/public">Public Page</StyledLink>
+          <StyledLink to="/protected">Protected Page</StyledLink>
+        </StyledNavigation>
+
         {isAuthenticated && (
-        <li>
-        <button onClick={handleLogout}>Logout</button>
-      </li>
+          <StyledAction>
+            <StyledButton onClick={handleLogout}>Logout</StyledButton>
+          </StyledAction>
         )}
-      </ul>
+      </StyledCollapse>
     </StyledNavBar>
   )
 }

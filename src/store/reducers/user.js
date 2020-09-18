@@ -1,14 +1,9 @@
-import {
-  SET_TOKEN,
-  RESTORE_TOKEN,
-  SET_USER,
-  LOGOUT
-} from '../constants/user'
+import { SET_TOKEN, RESTORE_TOKEN, SET_USER, LOGOUT } from '../constants/user'
 
 const initialState = {
   token: null,
   username: null,
-  email: null,
+  email: null
 }
 
 export default (state = initialState, action) => {

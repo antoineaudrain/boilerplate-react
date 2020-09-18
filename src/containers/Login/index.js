@@ -13,7 +13,8 @@ const Login = () => {
 
   const handleLogin = async () => {
     const data = {
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDBjY2QzNi0yMGVlLTQzY2ItOTE5Ni1lMzA0MGJmMDkyYzEifQ.GTtj3yHLDw3jF-Pt0EwUK0Zjutl4U6IUI-NesgA6DYY',
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDBjY2QzNi0yMGVlLTQzY2ItOTE5Ni1lMzA0MGJmMDkyYzEifQ.GTtj3yHLDw3jF-Pt0EwUK0Zjutl4U6IUI-NesgA6DYY',
       user: {
         username: 'johndoe',
         email: 'johndoe@test.com'
