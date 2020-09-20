@@ -1,19 +1,26 @@
 module.exports = {
   env: {
-    es2020: true,
-    node: true
+    es2021: true,
+    node: true,
+    jest: true,
   },
+  extends: [
+    'airbnb-base',
+    'prettier'
+  ],
+  ignorePatterns: ['dist/*', 'node-modules/*'],
   parserOptions: {
-    ecmaVersion: 11,
+    ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true
     }
   },
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier', 'react'],
   rules: {
     'prettier/prettier': ['error']
   },
-  ignorePatterns: ['dist/*', 'node-modules/*']
+  plugins: [
+    'prettier',
+    'react'
+  ]
 }
